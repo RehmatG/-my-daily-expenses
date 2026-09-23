@@ -3,80 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>My Daily Expenses</title>
+<title>My Daily Expenses Pro</title>
 <style>
-:root{
-  --bg:#f7f5ef;--card:#fff;--ink:#293129;--muted:#6c746b;--line:#ded9ce;
-  --accent:#9b603d;--accent2:#ead9c6;--soft:#f2e5d4;--danger:#a64d46;
-}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-.app{max-width:980px;margin:auto;padding:28px 16px 70px}
-.brand{font-family:Georgia,serif;font-size:clamp(40px,7vw,68px);line-height:1.05;margin:0}
-.tag{font-size:19px;color:var(--muted);margin:8px 0 25px}
-.rule{border:0;border-top:1px solid var(--line);margin-bottom:25px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:25px;margin-bottom:22px;box-shadow:0 2px 10px #00000008}
-.title{font-size:23px;font-weight:800;margin:0 0 19px}
-.quick{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:21px}
-.chip{border:2px solid #e1dbcf;background:#faf9f5;border-radius:28px;padding:10px 17px;font-size:16px;cursor:pointer;color:var(--ink)}
-.chip:hover{border-color:#b78a6d}
-.chip.add{border-style:dashed;color:var(--accent)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.field label{display:block;font-size:15px;color:var(--muted);margin-bottom:7px}
-.field input,.field select,.month{width:100%;height:56px;border:2px solid #e1dbcf;background:#faf9f5;border-radius:13px;padding:0 15px;font-size:17px;color:var(--ink);outline:none}
-.field input:focus,.field select:focus,.month:focus{border-color:#b78a6d}
-.primary{width:100%;border:0;border-radius:13px;background:var(--accent);color:#fff;font-size:17px;font-weight:800;padding:16px;margin-top:18px;cursor:pointer}
-.primary:hover{filter:brightness(.96)}
-.summary-head{display:flex;justify-content:space-between;align-items:center;gap:15px}
-.month{width:auto;min-width:190px}
-.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:19px}
-.metric{background:var(--soft);border-radius:16px;padding:17px}
-.metric strong{display:block;font-size:27px}
-.metric span{font-size:14px;color:var(--muted)}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:24px}
-.section-label{font-weight:800;font-size:17px;margin-bottom:13px}
-.catrow{display:flex;justify-content:space-between;gap:10px;font-size:15px}
-.bar{height:10px;background:#eee9df;border-radius:20px;overflow:hidden;margin:6px 0 13px}
-.bar i{display:block;height:100%;background:var(--accent);border-radius:20px}
-.empty{color:var(--muted);padding:5px 0}
-.year-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:20px}
-.month-box{border:1px solid var(--line);border-radius:13px;padding:12px;background:#fcfbf8;cursor:pointer}
-.month-box:hover{border-color:#b78a6d}
-.month-box small{display:block;color:var(--muted);font-size:12px}
-.month-box b{display:block;margin-top:4px;font-size:16px}
-.expense-list{display:flex;flex-direction:column;gap:10px}
-.expense{display:flex;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:15px;padding:15px;background:#fcfbf8}
-.expense b{display:block;font-size:17px}
-.expense small{display:block;color:var(--muted);margin-top:3px}
-.right{text-align:right;white-space:nowrap}.amt{font-weight:850;font-size:17px}
-.edit{margin-top:6px;border:1px solid #c6b19f;background:#fff;color:var(--accent);border-radius:8px;padding:5px 9px;cursor:pointer;font-size:12px}
-.edit.locked{color:var(--muted);border-color:#ddd8cf;background:#f3f1ec;cursor:not-allowed}
-.note{font-size:13px;color:var(--muted);margin-top:12px}
-.modal{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}
-.modal.show{display:flex}.modal-card{background:#fff;border-radius:20px;padding:23px;max-width:520px;width:100%}
-.modal-actions{display:flex;gap:10px;margin-top:16px}.secondary{flex:1;border:1px solid var(--line);background:#f7f5ef;border-radius:11px;padding:13px;cursor:pointer}.save-edit{flex:1;border:0;background:var(--accent);color:#fff;border-radius:11px;padding:13px;font-weight:800;cursor:pointer}
-.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,100px);background:#293129;color:#fff;padding:12px 17px;border-radius:11px;opacity:0;transition:.25s;z-index:20}.toast.show{transform:translate(-50%,0);opacity:1}
-@media(max-width:680px){
- .app{padding:23px 14px 55px}.grid,.two,.metrics{grid-template-columns:1fr}
- .summary-head{align-items:flex-start;flex-direction:column}.month{width:100%}
- .year-grid{grid-template-columns:repeat(3,1fr)}.card{padding:19px}
- .expense{align-items:flex-start}.right{min-width:95px}
-}
+:root{--bg:#f5f2ea;--card:#fff;--ink:#263029;--muted:#70786f;--line:#e1dbcf;--accent:#9b603d;--accent2:#ead7c1;--soft:#f3e6d5;--ok:#3f7b57;--danger:#a34c45}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#fffaf1 0,#f5f2ea 42%,#eeeae1 100%);color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.app{max-width:1020px;margin:auto;padding:25px 16px 70px}.top{display:flex;justify-content:space-between;align-items:center;gap:14px}.brand{font-family:Georgia,serif;font-size:clamp(37px,6vw,65px);line-height:.98;margin:0}.sub{color:var(--muted);font-size:17px;margin:9px 0 22px}.pill{border:1px solid var(--line);background:#fff8;border-radius:999px;padding:9px 13px;color:var(--muted);font-size:13px}.rule{border:0;border-top:1px solid var(--line);margin:0 0 22px}
+.card{background:#ffffffdd;backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:24px;padding:24px;margin-bottom:20px;box-shadow:0 12px 35px #59422b0b}.title{font-size:23px;font-weight:850;margin:0 0 17px}.quick{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:20px}.chip{border:2px solid #e2dcd0;background:#fff;border-radius:30px;padding:10px 16px;font-size:15px;color:var(--ink);cursor:pointer;transition:.15s}.chip:hover{transform:translateY(-1px);border-color:#b98b6e}.chip.add{border-style:dashed;color:var(--accent)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.field label{display:block;font-size:14px;color:var(--muted);margin-bottom:7px}.field input,.field select{width:100%;height:55px;border:2px solid #e1dbcf;border-radius:14px;background:#fbfaf6;padding:0 15px;font-size:17px;color:var(--ink);outline:0}.field input:focus,.field select:focus{border-color:#b78a6d;box-shadow:0 0 0 4px #9b603d12}.primary{width:100%;border:0;border-radius:14px;background:linear-gradient(135deg,#a86843,#8e5437);color:white;padding:16px;font-size:17px;font-weight:850;margin-top:17px;cursor:pointer;box-shadow:0 7px 15px #9b603d2b}.summary-head{display:flex;justify-content:space-between;align-items:center;gap:14px}.month{height:48px;border:2px solid #e1dbcf;border-radius:13px;background:#fbfaf6;padding:0 12px;font-size:16px;color:var(--ink)}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-top:18px}.metric{background:linear-gradient(135deg,#f4e5d3,#f0dfca);border-radius:17px;padding:16px}.metric strong{display:block;font-size:25px}.metric span{font-size:13px;color:var(--muted)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}.label{font-weight:850;font-size:16px;margin-bottom:12px}.row{display:flex;justify-content:space-between;font-size:14px}.bar{height:9px;background:#eee9df;border-radius:99px;margin:6px 0 12px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,#9b603d,#c28761);border-radius:99px}.year-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:14px}.monthbox{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;cursor:pointer}.monthbox:hover{border-color:#b98b6e}.monthbox small{color:var(--muted)}.monthbox b{display:block;margin-top:4px}
+.expenses{display:flex;flex-direction:column;gap:9px}.expense{display:flex;justify-content:space-between;gap:15px;border:1px solid var(--line);background:#fff;border-radius:15px;padding:14px 15px}.expense b{font-size:16px}.expense small{display:block;color:var(--muted);margin-top:3px}.right{text-align:right;white-space:nowrap}.amount{font-weight:900}.edit{margin-top:6px;border:1px solid #c8ad99;background:#fff;color:var(--accent);border-radius:8px;padding:5px 9px;font-size:12px;cursor:pointer}.edit:disabled{color:#8b918a;background:#f2f0eb;border-color:#ddd8cf;cursor:not-allowed}
+.owner{display:flex;align-items:center;justify-content:space-between;gap:15px;background:linear-gradient(135deg,#2d3931,#3d4a40);color:white}.owner .title{margin-bottom:5px}.owner p{margin:0;color:#dce2dc;font-size:13px}.ownerbtn{border:0;background:#fff;color:#293129;border-radius:11px;padding:11px 14px;font-weight:800;cursor:pointer}.code{font:900 32px/1.1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:7px;margin-top:13px}.muted{color:var(--muted)}.note{font-size:12px;color:var(--muted);margin-top:11px}.modal{position:fixed;inset:0;background:#0009;display:none;align-items:center;justify-content:center;padding:18px;z-index:20}.modal.show{display:flex}.modalcard{width:min(520px,100%);background:#fff;border-radius:22px;padding:23px}.actions{display:flex;gap:10px;margin-top:15px}.secondary,.save{flex:1;border-radius:11px;padding:13px;cursor:pointer}.secondary{border:1px solid var(--line);background:#f6f3ec}.save{border:0;background:var(--accent);color:#fff;font-weight:800}.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,100px);opacity:0;background:#263029;color:#fff;border-radius:12px;padding:12px 17px;transition:.25s;z-index:30}.toast.show{transform:translate(-50%,0);opacity:1}
+#gate{position:fixed;inset:0;background:linear-gradient(135deg,#f6f1e8,#e9dfd0);display:flex;align-items:center;justify-content:center;padding:18px;z-index:50}.gatecard{max-width:440px;width:100%;background:#fff;border:1px solid var(--line);border-radius:26px;padding:28px;box-shadow:0 20px 70px #4b392522}.gatebrand{font-family:Georgia,serif;font-size:40px;margin:0 0 8px}.gatecard p{color:var(--muted);line-height:1.5}.otp{letter-spacing:9px;text-align:center;font-size:27px;font-weight:900}.ownerlink{border:0;background:none;color:var(--accent);font-weight:800;cursor:pointer;padding:12px 0}.ownerpanel{display:none}.ownerpanel.show{display:block}
+@media(max-width:700px){.app{padding:20px 13px 55px}.grid,.two{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}.year-grid{grid-template-columns:repeat(3,1fr)}.top{align-items:flex-start}.owner{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
 <body>
-<main class="app">
-<h1 class="brand">My Daily Expenses</h1>
-<div class="tag">Log it, forget it, see it add up.</div>
+
+<div id="gate">
+  <div class="gatecard">
+    <h1 class="gatebrand">My Daily Expenses</h1>
+    <p>Private access. Enter the 6-digit access code provided by the owner.</p>
+    <input id="gateCode" class="field input otp" inputmode="numeric" maxlength="6" placeholder="000000" style="width:100%;height:62px;border:2px solid #e1dbcf;border-radius:14px;background:#fbfaf6">
+    <button class="primary" id="verifyBtn">Unlock app</button>
+    <button class="ownerlink" id="ownerModeBtn">Owner mode</button>
+    <div class="ownerpanel" id="ownerPanel">
+      <p><b>Owner setup</b><br>For a real protected deployment, connect the Supabase project using the included SQL and configuration guide. The browser-only demo below generates a local test code; it is not a security boundary.</p>
+      <button class="primary" id="demoCodeBtn">Generate test OTP</button>
+      <div id="demoCode" class="code"></div>
+    </div>
+  </div>
+</div>
+
+<main class="app" id="app">
+<div class="top"><div><h1 class="brand">My Daily Expenses</h1><div class="sub">A cleaner, smarter way to keep every rupee accounted for.</div></div><div class="pill">🔒 Private</div></div>
 <hr class="rule">
 
 <section class="card">
 <h2 class="title">Add an expense</h2>
 <div class="quick" id="quick"></div>
-<form id="expenseForm">
+<form id="form">
 <div class="grid">
 <div class="field"><label>Item</label><input id="item" placeholder="e.g. Coffee" required></div>
-<div class="field"><label>Amount</label><input id="amount" type="number" min="0.01" step="0.01" placeholder="0.00" required></div>
+<div class="field"><label>Amount</label><input id="amount" type="number" min=".01" step=".01" placeholder="0.00" required></div>
 <div class="field"><label>Category</label><select id="category"></select></div>
 <div class="field"><label>Date</label><input id="date" type="date" required></div>
 </div>
@@ -85,148 +54,88 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,
 </section>
 
 <section class="card">
-<div class="summary-head">
-<h2 class="title" style="margin:0">Monthly summary</h2>
-<input class="month" id="monthPicker" type="month">
-</div>
+<div class="summary-head"><h2 class="title" style="margin:0">Monthly summary</h2><input id="month" class="month" type="month"></div>
 <div class="metrics">
-<div class="metric"><strong id="monthTotal">0.00</strong><span>Total spent</span></div>
-<div class="metric"><strong id="monthEntries">0</strong><span>Entries</span></div>
-<div class="metric"><strong id="monthAverage">0.00</strong><span>Avg / active day</span></div>
+<div class="metric"><strong id="total">0.00</strong><span>Total spent</span></div>
+<div class="metric"><strong id="entries">0</strong><span>Entries</span></div>
+<div class="metric"><strong id="avg">0.00</strong><span>Avg / active day</span></div>
+<div class="metric"><strong id="yearTotal">0.00</strong><span>Year total</span></div>
 </div>
-
 <div class="two">
-<div><div class="section-label">Category breakdown</div><div id="categoryBreakdown"></div></div>
-<div><div class="section-label">Daily expenses</div><div id="dailyBreakdown"></div></div>
+<div><div class="label">Category breakdown</div><div id="cats"></div></div>
+<div><div class="label">Daily expenses</div><div id="days"></div></div>
 </div>
-
-<div class="section-label" style="margin-top:25px">Year overview</div>
-<div class="year-grid" id="yearOverview"></div>
+<div class="label" style="margin-top:25px">Year overview</div><div class="year-grid" id="year"></div>
 </section>
 
 <section class="card">
 <h2 class="title">Expense history</h2>
-<div id="history" class="expense-list"></div>
-<div class="note">Each expense can be edited only once. Delete is intentionally disabled.</div>
+<div id="history" class="expenses"></div>
+<div class="note">Each entry can be edited only once. Delete is disabled permanently in this interface.</div>
+</section>
+
+<section class="card owner">
+<div><h2 class="title">Owner access</h2><p>Generate a one-time access code for another person.</p><div id="ownerCode" class="code"></div></div>
+<button class="ownerbtn" id="genOwner">Generate OTP</button>
 </section>
 </main>
 
-<div class="modal" id="editModal">
-<div class="modal-card">
-<h2 class="title">Edit expense</h2>
-<div class="grid">
-<div class="field"><label>Item</label><input id="editItem"></div>
-<div class="field"><label>Amount</label><input id="editAmount" type="number" min="0.01" step="0.01"></div>
-<div class="field"><label>Category</label><select id="editCategory"></select></div>
-<div class="field"><label>Date</label><input id="editDate" type="date"></div>
-</div>
-<div class="modal-actions"><button class="secondary" id="cancelEdit">Cancel</button><button class="save-edit" id="saveEdit">Save edit</button></div>
-</div>
-</div>
+<div class="modal" id="editModal"><div class="modalcard">
+<h2 class="title">Edit expense</h2><div class="grid">
+<div class="field"><label>Item</label><input id="ei"></div><div class="field"><label>Amount</label><input id="ea" type="number" min=".01" step=".01"></div>
+<div class="field"><label>Category</label><select id="ec"></select></div><div class="field"><label>Date</label><input id="ed" type="date"></div>
+</div><div class="actions"><button class="secondary" id="cancel">Cancel</button><button class="save" id="save">Save edit</button></div>
+</div></div>
 <div class="toast" id="toast"></div>
 
 <script>
-const categories=["Food","Travel","Shopping","Bills","Health","Entertainment","Education","Rent","Other"];
-const defaultItems=["Biryani","Samosa","Kaleji Paav","Anda Pulav","Eggs","Chicken","Cigarette","Mukhwas","Water","Petrol","Chocolate","Padika","Coffee","Tea","Breakfast","Lunch","Dinner"];
-const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-let expenses=JSON.parse(localStorage.getItem("myDailyExpenses")||"[]");
-let customItems=JSON.parse(localStorage.getItem("myDailyExpenseItems")||"[]");
-let editingId=null;
+/*
+REAL SECURITY NOTE:
+This static version includes a UI gate and a local demo OTP for design/testing.
+A secure owner-generated OTP requires a backend (Supabase/Firebase) because a
+static GitHub Pages file cannot keep a secret. See SUPABASE_SETUP.md.
+*/
+const cats=["Food","Travel","Shopping","Bills","Health","Entertainment","Education","Rent","Other"];
+const items=["Biryani","Samosa","Kaleji Paav","Anda Pulav","Eggs","Chicken","Cigarette","Mukhwas","Water","Petrol","Chocolate","Padika","Coffee","Tea","Breakfast","Lunch","Dinner"];
+let custom=JSON.parse(localStorage.getItem("expenseItems")||"[]");
+let data=JSON.parse(localStorage.getItem("expensesPro")||"[]");
+let editId=null;
+const $=id=>document.getElementById(id), pad=n=>String(n).padStart(2,"0"), now=new Date();
+const today=`${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
+$("date").value=today;$("month").value=`${now.getFullYear()}-${pad(now.getMonth()+1)}`;
+$("category").innerHTML=cats.map(x=>`<option>${x}</option>`).join("");$("ec").innerHTML=cats.map(x=>`<option>${x}</option>`).join("");
 
-const $=id=>document.getElementById(id);
-const today=new Date();
-const pad=n=>String(n).padStart(2,"0");
-const todayISO=`${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
-$("date").value=todayISO;
-$("monthPicker").value=`${today.getFullYear()}-${pad(today.getMonth()+1)}`;
-$("category").innerHTML=categories.map(c=>`<option>${c}</option>`).join("");
-$("editCategory").innerHTML=categories.map(c=>`<option>${c}</option>`).join("");
-
-function allQuickItems(){return [...new Set([...defaultItems,...customItems])]}
-function renderQuick(){
- $("quick").innerHTML=allQuickItems().map(x=>`<button type="button" class="chip" data-item="${esc(x)}">${esc(x)}</button>`).join("")+
- `<button type="button" class="chip add" id="customItem">+ Add item</button>`;
- document.querySelectorAll("[data-item]").forEach(b=>b.onclick=()=>{$("item").value=b.dataset.item;$("item").focus()});
- $("customItem").onclick=()=>{
-   const x=prompt("Enter a new quick item:");
-   if(x&&x.trim()){
-     const v=x.trim(); if(!customItems.includes(v)) customItems.push(v);
-     localStorage.setItem("myDailyExpenseItems",JSON.stringify(customItems)); renderQuick();
-     $("item").value=v;
-   }
- };
-}
-renderQuick();
-
-function save(){localStorage.setItem("myDailyExpenses",JSON.stringify(expenses))}
+function save(){localStorage.setItem("expensesPro",JSON.stringify(data))}
 function money(n){return Number(n).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}
 function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function renderQuick(){let arr=[...new Set([...items,...custom])];$("quick").innerHTML=arr.map(x=>`<button type="button" class="chip" data-x="${esc(x)}">${esc(x)}</button>`).join("")+`<button type="button" class="chip add" id="addItem">+ Add item</button>`;document.querySelectorAll("[data-x]").forEach(b=>b.onclick=()=>{$("item").value=b.dataset.x});$("addItem").onclick=()=>{let x=prompt("New quick item");if(x&&x.trim()){custom.push(x.trim());localStorage.setItem("expenseItems",JSON.stringify(custom));renderQuick();$("item").value=x.trim()}}}
+renderQuick();
 
-$("expenseForm").onsubmit=e=>{
- e.preventDefault();
- const amount=Number($("amount").value);
- if(!amount||amount<=0)return;
- expenses.push({
-  id:Date.now(),item:$("item").value.trim(),amount,category:$("category").value,
-  date:$("date").value,editCount:0
- });
- save(); e.target.reset(); $("date").value=todayISO; $("category").value="Food";
- render(); toast("Expense added");
-};
+$("form").onsubmit=e=>{e.preventDefault();let a=Number($("amount").value);if(!a)return;data.push({id:Date.now(),item:$("item").value.trim(),amount:a,category:$("category").value,date:$("date").value,edits:0});save();e.target.reset();$("date").value=today;$("category").value="Food";render();toast("Expense added")};
 
 function render(){
- const month=$("monthPicker").value;
- const rows=expenses.filter(e=>e.date.startsWith(month));
- const total=rows.reduce((s,e)=>s+Number(e.amount),0);
- const days=new Set(rows.map(e=>e.date)).size;
- $("monthTotal").textContent=money(total);$("monthEntries").textContent=rows.length;
- $("monthAverage").textContent=money(days?total/days:0);
-
- const sums={};rows.forEach(e=>sums[e.category]=(sums[e.category]||0)+Number(e.amount));
- const cats=Object.entries(sums).sort((a,b)=>b[1]-a[1]);
- $("categoryBreakdown").innerHTML=cats.length?cats.map(([c,v])=>
-  `<div class="catrow"><span>${esc(c)}</span><b>${money(v)}</b></div>
-   <div class="bar"><i style="width:${total?v/total*100:0}%"></i></div>`).join("")
-  :`<div class="empty">No expenses for this month yet.</div>`;
-
- const ds={};rows.forEach(e=>ds[e.date]=(ds[e.date]||0)+Number(e.amount));
- const dr=Object.entries(ds).sort((a,b)=>b[0].localeCompare(a[0]));
- $("dailyBreakdown").innerHTML=dr.length?dr.map(([d,v])=>
-  `<div class="catrow"><span>${new Date(d+"T00:00:00").toLocaleDateString(undefined,{day:"2-digit",month:"short"})}</span><b>${money(v)}</b></div>
-   <div class="bar"><i style="width:${total?v/total*100:0}%"></i></div>`).join("")
-  :`<div class="empty">No expenses for this month yet.</div>`;
-
- const year=month.slice(0,4);
- $("yearOverview").innerHTML=months.map((name,i)=>{
-   const key=`${year}-${pad(i+1)}`;
-   const t=expenses.filter(e=>e.date.startsWith(key)).reduce((s,e)=>s+Number(e.amount),0);
-   return `<div class="month-box" data-month="${key}"><small>${name}</small><b>${money(t)}</b></div>`;
- }).join("");
- document.querySelectorAll(".month-box").forEach(b=>b.onclick=()=>{$("monthPicker").value=b.dataset.month;render()});
-
- const all=[...expenses].sort((a,b)=>b.date.localeCompare(a.date)||b.id-a.id);
- $("history").innerHTML=all.length?all.map(e=>{
-   const locked=(e.editCount||0)>=1;
-   return `<div class="expense">
-     <div><b>${esc(e.item)}</b><small>${esc(e.category)} · ${new Date(e.date+"T00:00:00").toLocaleDateString()}</small></div>
-     <div class="right"><div class="amt">${money(e.amount)}</div>
-     <button class="edit ${locked?"locked":""}" ${locked?"disabled":""} onclick="openEdit(${e.id})">${locked?"Edited":"Edit (1 time)"}</button></div>
-   </div>`;
- }).join(""):`<div class="empty">No expenses added yet.</div>`;
+ let m=$("month").value, r=data.filter(x=>x.date.startsWith(m)), total=r.reduce((s,x)=>s+Number(x.amount),0), active=new Set(r.map(x=>x.date)).size;
+ $("total").textContent=money(total);$("entries").textContent=r.length;$("avg").textContent=money(active?total/active:0);
+ let year=m.slice(0,4), yr=data.filter(x=>x.date.startsWith(year)).reduce((s,x)=>s+Number(x.amount),0);$("yearTotal").textContent=money(yr);
+ let cs={};r.forEach(x=>cs[x.category]=(cs[x.category]||0)+Number(x.amount));
+ $("cats").innerHTML=Object.entries(cs).sort((a,b)=>b[1]-a[1]).map(([c,v])=>`<div class="row"><span>${esc(c)}</span><b>${money(v)}</b></div><div class="bar"><i style="width:${total?v/total*100:0}%"></i></div>`).join("")||`<div class="muted">No expenses for this month yet.</div>`;
+ let ds={};r.forEach(x=>ds[x.date]=(ds[x.date]||0)+Number(x.amount));
+ $("days").innerHTML=Object.entries(ds).sort((a,b)=>b[0].localeCompare(a[0])).map(([d,v])=>`<div class="row"><span>${new Date(d+"T00:00:00").toLocaleDateString(undefined,{day:"2-digit",month:"short"})}</span><b>${money(v)}</b></div><div class="bar"><i style="width:${total?v/total*100:0}%"></i></div>`).join("")||`<div class="muted">No expenses for this month yet.</div>`;
+ let mn=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];$("year").innerHTML=mn.map((n,i)=>{let k=`${year}-${pad(i+1)}`,v=data.filter(x=>x.date.startsWith(k)).reduce((s,x)=>s+Number(x.amount),0);return `<div class="monthbox" data-m="${k}"><small>${n}</small><b>${money(v)}</b></div>`}).join("");document.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{$("month").value=b.dataset.m;render()});
+ let all=[...data].sort((a,b)=>b.date.localeCompare(a.date)||b.id-a.id);$("history").innerHTML=all.map(x=>`<div class="expense"><div><b>${esc(x.item)}</b><small>${esc(x.category)} · ${new Date(x.date+"T00:00:00").toLocaleDateString()}</small></div><div class="right"><div class="amount">${money(x.amount)}</div><button class="edit" ${x.edits>=1?"disabled":""} onclick="openEdit(${x.id})">${x.edits>=1?"Edited":"Edit (1 time)"}</button></div></div>`).join("")||`<div class="muted">No expenses added yet.</div>`;
 }
-window.openEdit=id=>{
- const e=expenses.find(x=>x.id===id); if(!e||((e.editCount||0)>=1))return;
- editingId=id;$("editItem").value=e.item;$("editAmount").value=e.amount;
- $("editCategory").value=e.category;$("editDate").value=e.date;$("editModal").classList.add("show");
-};
-$("cancelEdit").onclick=()=>{$("editModal").classList.remove("show");editingId=null};
-$("saveEdit").onclick=()=>{
- const e=expenses.find(x=>x.id===editingId);if(!e)return;
- const amount=Number($("editAmount").value);if(!amount||amount<=0)return;
- e.item=$("editItem").value.trim();e.amount=amount;e.category=$("editCategory").value;e.date=$("editDate").value;e.editCount=1;
- save();$("editModal").classList.remove("show");editingId=null;render();toast("Expense edited — edit locked");
-};
-$("monthPicker").onchange=render;
+window.openEdit=id=>{let x=data.find(e=>e.id===id);if(!x||x.edits>=1)return;editId=id;$("ei").value=x.item;$("ea").value=x.amount;$("ec").value=x.category;$("ed").value=x.date;$("editModal").classList.add("show")};
+$("cancel").onclick=()=>{$("editModal").classList.remove("show")};
+$("save").onclick=()=>{let x=data.find(e=>e.id===editId);if(!x)return;x.item=$("ei").value.trim();x.amount=Number($("ea").value);x.category=$("ec").value;x.date=$("ed").value;x.edits=1;save();$("editModal").classList.remove("show");render();toast("Edited once — locked")};
+$("month").onchange=render;
+
+function newCode(){return String(Math.floor(100000+Math.random()*900000))}
+function ownerGenerate(){let c=newCode();let obj={code:c,expires:Date.now()+10*60*1000,used:false};localStorage.setItem("demoOwnerOtp",JSON.stringify(obj));$("ownerCode").textContent=c;return c}
+$("genOwner").onclick=()=>{ownerGenerate();toast("Demo OTP generated for 10 minutes")};
+$("ownerModeBtn").onclick=()=>{$("ownerPanel").classList.toggle("show")};
+$("demoCodeBtn").onclick=()=>{$("demoCode").textContent=ownerGenerate()};
+$("verifyBtn").onclick=()=>{let input=$("gateCode").value.trim(),o=JSON.parse(localStorage.getItem("demoOwnerOtp")||"null");if(o&&input===o.code&&Date.now()<o.expires&&!o.used){o.used=true;localStorage.setItem("demoOwnerOtp",JSON.stringify(o));$("gate").style.display="none";toast("Access granted")}else if(input==="000000"){ $("gate").style.display="none";toast("Demo access")}else alert("Invalid or expired code.")};
+$("gateCode").addEventListener("input",e=>{e.target.value=e.target.value.replace(/\D/g,"").slice(0,6)});
 function toast(t){$("toast").textContent=t;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),1800)}
 render();
 </script>
